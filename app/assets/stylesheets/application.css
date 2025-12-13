@@ -297,3 +297,54 @@ footer {
 .guest-login {
   margin-top: 20px;
 }
+
+@media (max-width: 600px) {
+  header {
+    padding: 8px 15px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .user-info {
+    gap: 4px;
+    max-width: 40%;
+    justify-content: flex-end;
+  }
+
+  .dropdown-toggle {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .avatar-image, .avatar-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .form-container {
+    max-width: 90%;
+    margin: 30px auto;
+    padding: 1.5rem;
+  }
+
+  .form-container input[type="email"],
+  .form-container input[type="password"],
+  .form-container input[type="text"],
+  .form-container textarea {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .form-container input[type="submit"],
+  .form-container .pro-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .form-container h2 {
+    font-size: 1.2rem;
+  }
+}

@@ -9,7 +9,7 @@ https://drama-app-82b1924a525a.herokuapp.com
 
 # アプリ概要
 
-ドラマのタイトル、キャスト、ジャンル、感情タグ、感想を記録
+ドラマのタイトル、ジャンル、感情タグ、感想を記録
 登録したドラマを検索・絞り込み
 公開・非公開の切り替えでプライベートとシェアを両立
 
@@ -24,12 +24,35 @@ https://drama-app-82b1924a525a.herokuapp.com
 
 # 使用技術
 
+## システム構成図
+![システム構成図](app/assets/images/system_architecture.png)
+
 フロントエンド　　HTML / CSS / JavaScript
 バックエンド　　Ruby ~> 3.3.3 / Rails ~> 6.1
 データベース　　SQLite3(開発) / Postgre(本番)
 認証　　Devise
 デプロイ　　Heroku
 テスト　　RSpec / Capybara
+
+# 画面イメージ
+
+## トップページ
+![トップページ](app/assets/images/home.png)
+
+## ドラマ一覧・検索画面
+![ドラマ一覧](app/assets/images/dramas_index.png)
+
+## ドラマ詳細画面
+![ドラマ詳細](app/assets/images/dramas_show.png)
+
+## ドラマ登録画面
+![ドラマ登録](app/assets/images/dramas_new.png)
+
+## ログイン（ゲストログイン）
+![ログイン](app/assets/images/users_sign_in.png)
+
+## 新規登録
+![新規登録](app/assets/images/users_sign_up.png)
 
 # 機能一覧
 
@@ -61,3 +84,9 @@ mood
 watched_on
 impression
 is_public
+
+# 今後の課題・改善
+- ドラマの並び替え機能の追加
+- 公開ドラマを他のユーザーが閲覧できる機能追加
+- 視聴傾向を可視化できるようにグラフ化
+- AIによるおすすめドラマ提案機能の追加
