@@ -17,8 +17,9 @@
 <!-- 検索結果・一覧 -->
   <% if @dramas.any? %>
     <p class="search-result">検索結果：<%= @dramas.count %>件</p>
+    <div class="drama-grid">
     <% @dramas.each do |drama| %>
-      <div class="drama-list">
+      <div class="drama-card">
         <h3><%= link_to drama.title, drama_path(drama) %></h3>
         <p>ジャンル：<%= drama.genre %></p>
         <p>感情タグ：<%= drama.mood %></p>
@@ -26,10 +27,21 @@
         <% if drama.watched_on.present? %>
           <p>視聴日：<%= drama.watched_on.strftime("%Y年%m月%d日") %></p>
         <% end %>
-        <p>感想：<%= drama.description %></p>
+        <p>
+          感想：
+          <% if drama.description.present? %>
+            <% if drama.description.length > 30 %>
+              <%= truncate(drama.description, length: 30) %>
+              <%= link_to "(続きを読む)", drama_path(drama), class: "more-link" %>
+            <% else %>
+              <%= drama.description %>
+            <% end %>
+          <% end %>
+        </p>
         <p>公開状態：<%= drama.is_public? ? "公開中" : "非公開" %></p>
       </div>
     <% end %>
+    </div>
   <% else %>
     <p>該当するドラマはありませんでした。</p>
   <% end %>

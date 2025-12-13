@@ -21,6 +21,14 @@
   gap: 8px;
 }
 
+.search-form input,
+.search-form select,
+.search-form input[type="submit"] {
+  width: 300px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
 .search-form input {
   padding: 6px;
   border: 1px solid #ccc;
@@ -40,33 +48,56 @@
   background-color: #45a049;
 }
 
-/* ドラマリスト */
-.drama-list {
-  max-width: 600px;
+/* ドラマグリッド */
+.drama-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+/* ドラマカード */
+.drama-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   border: 1px solid #ddd;
   border-radius: 6px;
-  padding: 16px;
-  margin: 20px auto;
+  padding: 20px;
+  margin: 0;
+  height: 300px;
+  overflow: hidden;
   background-color: #fafafa;
 }
 
-/* ドラマリストのタイトル */
-.drama-list h3 {
+/* ドラマカードのタイトル */
+.drama-card h3 {
   font-size: 20px;
   margin: 0 0 6px;
   font-weight: bold;
 }
 
-.drama-list h3 a {
+.drama-card h3 a {
   text-decoration: none;
   color: #2c3c50;
 }
 
-/* ドラマリストのジャンル・タグ */
-.drama-list p {
+/* ドラマカードのジャンル・タグ */
+.drama-card p {
   font-size: 15px;
   color: #555;
   margin: 2px 0;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* ドラマカードの感想 */
+.more-link {
+  font-size: 12px;
+  color: #1285d7;
+  text-decoration: none;
+  margin-left: 4px;
 }
 
 /* ドラマ詳細ページ */
@@ -171,4 +202,48 @@
   justify-content: center;
   gap: 15px;
   margin-top: 25px;
+}
+
+@media (max-width: 600px) {
+  .drama-container {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .search-form {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .search-form input,
+  .search-form select,
+  .search-form input[type="submit"] {
+    max-width: 300px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .drama-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .drama-card {
+    max-width: 95%;
+    padding: 12px;
+  }
+
+  .drama-show {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .drama-show .description {
+    width: 90%;
+  }
+
+  .drama-form {
+    max-width: 95%;
+    padding: 20px;
+  }
 }
