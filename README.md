@@ -35,13 +35,13 @@ https://drama-app-82b1924a525a.herokuapp.com
 ## システム構成図
 ![システム構成図](app/assets/images/system_architecture.png)
 
-フロントエンド　　HTML / CSS / JavaScript
-バックエンド　　Ruby ~> 3.3.3 / Rails ~> 6.1
-データベース　　SQLite3(開発) / Postgre(本番)
-認証　　Devise
-画像管理　ActiveStorage + Amazon S3
-デプロイ　　Heroku
-テスト　　RSpec / Capybara
+- フロントエンド　　HTML / CSS / JavaScript
+- バックエンド　　Ruby ~> 3.3.3 / Rails ~> 6.1
+- データベース　　SQLite3(開発) / Postgre(本番)
+- 認証　　Devise
+- 画像管理　ActiveStorage + Amazon S3
+- デプロイ　　Heroku
+- テスト　　RSpec / Capybara
 
 ## システム構成について
 このアプリは、Railsを中心としたシンプルな構成としています。
@@ -64,33 +64,27 @@ Herokuの一時的(エフェメラル)な保存を考慮して、ActiveStorage +
 
 # 画面イメージ
 
-## トップページ
-![トップページ](app/assets/images/home.png)
+| トップページ | ドラマ一覧・検索画 |
+| --- | --- |
+| ![トップページ](app/assets/images/home.png) | ![ドラマ一覧](app/assets/images/dramas_index.png) |
 
-## ドラマ一覧・検索画面
-![ドラマ一覧](app/assets/images/dramas_index.png)
+| ドラマ詳細画面 | ドラマ登録画面 |
+| --- | --- |
+| ![ドラマ詳細](app/assets/images/dramas_show.png) | ![ドラマ登録](app/assets/images/dramas_new.png) |
 
-## ドラマ詳細画面
-![ドラマ詳細](app/assets/images/dramas_show.png)
-
-## ドラマ登録画面
-![ドラマ登録](app/assets/images/dramas_new.png)
-
-## ログイン（ゲストログイン）
-![ログイン](app/assets/images/users_sign_in.png)
-
-## 新規登録
-![新規登録](app/assets/images/users_sign_up.png)
+| ログイン（ゲストログイン）| 新規登録 |
+| --- | --- |
+| ![ログイン](app/assets/images/users_sign_in.png) | ![新規登録](app/assets/images/users_sign_up.png) |
 
 # 機能一覧
 
-ユーザー登録　　ログイン / ログアウト（Devise使用）
-プロフィール編集
-ドラマ登録　　(タイトル、ジャンル、感情タグ、感想)
-一覧 / 詳細 / 編集 / 削除 (CRUD)
-タグ・ジャンル・キーワード検索
-公開 / 非公開の切り替え
-RSpec / Capybaraによるテスト整備
+- ユーザー登録　　ログイン / ログアウト（Devise使用）
+- プロフィール編集
+- ドラマ登録　　(タイトル、ジャンル、感情タグ、感想)
+- 一覧 / 詳細 / 編集 / 削除 (CRUD)
+- タグ・ジャンル・キーワード検索
+- 公開 / 非公開の切り替え
+- RSpec / Capybaraによるテスト整備
 
 # ER図
 ![ER図](app/assets/images/er_diagram.png)
