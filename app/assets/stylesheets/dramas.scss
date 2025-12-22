@@ -105,7 +105,7 @@
   max-width: 700px;
   margin: 40px auto;
   padding: 30px;
-  background: rgb(61, 119, 226);
+  background-color: #eaf2ff;
   border-radius: 12px;
   line-height: 1.8;
 }
@@ -114,8 +114,8 @@
   font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
-  color: white;
-  border-bottom: 2px solid #eee;
+  color: black;
+  border-bottom: 2px solid #f5e33d;
   padding-bottom: 10px;
 }
 
@@ -124,7 +124,7 @@
   margin: 6px 0;
   padding: 8px 12px;
   font-size: 16px;
-  color: white;
+  color: black;
   justify-content: center;
   gap: 15px;
 }
@@ -141,7 +141,7 @@
   line-height: 1.9;
   white-space: normal;
   word-break: break-word;
-  background: #ffffff20;
+  background: #e4666620;
   padding: 10px 15px;
   border-radius: 6px;
 }

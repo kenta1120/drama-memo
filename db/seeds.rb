@@ -10,40 +10,45 @@ guest = User.find_or_create_by!(email: "guest@example.com") do |user|
   user.name = "ゲストユーザー"
 end
 
+guest.avatar.purge if guest.avatar.attached?
 guest.avatar.attach(
   io: File.open(Rails.root.join("app/assets/images/sample1.png")),
   filename: "sample1.png"
 )
 
 3.times do |i|
-  guest.dramas.create!(
-    title: "ゲストサンプルドラマ#{i + 1}",
-    genre: "コメディ",
-    mood: "癒し",
-    description: "ゲストユーザーのサンプル投稿です。",
-    is_public: true
-  )
+  guest.dramas.find_or_create_by!(
+    title: "ゲストサンプルドラマ#{i + 1}"
+  ) do |drama|
+    drama.genre = "コメディ"
+    drama.mood = "癒し"
+    drama.description = "ゲストユーザーのサンプル投稿です。"
+    drama.is_public = true
+  end
 end
 
 3.times do |i|
-  user = User.create!(
-    email: "sample#{i + 1}@example.com",
-    password: "password",
-    name: "サンプルユーザー#{i + 1}"
-  )
+  user = User.find_or_create_by!(
+    email: "sample#{i + 1}@example.com"
+  ) do |u|
+    u.password = "password"
+    u.name = "サンプルユーザー#{i + 1}"
+  end
 
+  user.avatar.purge if user.avatar.attached?
   user.avatar.attach(
     io: File.open(Rails.root.join("app/assets/images/sample#{i + 1}.png")),
     filename: "sample#{i + 1}.png"
   )
 
   3.times do |j|
-    user.dramas.create!(
-      title: "サンプル#{i + 1}-ドラマ#{j + 1}",
-      genre: "恋愛",
-      mood: "胸キュン",
-      description: "サンプルユーザー#{i + 1}の投稿です。",
-      is_public: [true, false].sample
-    )
+    user.dramas.find_or_create_by!(
+      title: "サンプル#{i + 1}-ドラマ#{j + 1}"
+    ) do |drama|
+      drama.genre = "恋愛"
+      drama.mood = "胸キュン"
+      drama.description = "サンプルユーザー#{i + 1}の投稿です。"
+      drama.is_public = [true, false].sample
+    end
   end
 end
