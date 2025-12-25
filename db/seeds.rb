@@ -5,11 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-def attach_avatar(user, filename)
-  return if user.avatar.attached?
+def attach_avatar(user, filename, force: false)
+  return if user.avatar.attached? && !force
 
   path = Rails.root.join("app/assets/images", filename)
   return unless File.exist?(path)
+
+  user.avatar.purge if user.avatar.attached?
 
   user.avatar.attach(
     io: File.open(path),
@@ -23,7 +25,7 @@ guest = User.find_or_create_by!(email: "guest@example.com") do |user|
   user.name = "ゲストユーザー"
 end
 
-attach_avatar(guest, "sample1.png")
+attach_avatar(guest, "sample1.png", force: true)
 
 3.times do |i|
   guest.dramas.find_or_create_by!(
@@ -44,7 +46,7 @@ end
     u.name = "サンプルユーザー#{i + 1}"
   end
 
-  attach_avatar(user, "sample#{i + 1}.png")
+  attach_avatar(user, "sample#{i + 1}.png", force: true)
 
   3.times do |j|
     user.dramas.find_or_create_by!(
