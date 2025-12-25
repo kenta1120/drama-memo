@@ -20,42 +20,81 @@ def attach_avatar(user, filename, force: false)
   )
 end
 
-guest = User.find_or_create_by!(email: "guest@example.com") do |user|
-  user.password = "guestpassword"
-  user.name = "ゲストユーザー"
+drama_samples = [
+  {
+    title: "笑えるドラマ",
+    genre: "コメディ",
+    mood: "癒し"
+  },
+  {
+    title: "怖すぎるドラマ",
+    genre: "ホラー",
+    mood: "怖い"
+  },
+  {
+    title: "どきどきするドラマ",
+    genre: "恋愛",
+    mood: "ドキドキ"
+  }
+]
+
+# ゲストユーザー
+guest = User.find_or_create_by!(email: "guest@example.com") do |u|
+  u.password = "guestpassword"
+  u.name = "ゲストユーザー"
 end
 
 attach_avatar(guest, "sample1.png", force: true)
+guest.dramas.destroy_all
 
-3.times do |i|
-  guest.dramas.find_or_create_by!(
-    title: "ゲストサンプルドラマ#{i + 1}"
-  ) do |drama|
-    drama.genre = "コメディ"
-    drama.mood = "癒し"
-    drama.description = "ゲストユーザーのサンプル投稿です。"
-    drama.is_public = true
-  end
+drama_samples.each do |sample|
+  guest.dramas.create!(
+    title: sample[:title],
+    genre: sample[:genre],
+    mood: sample[:mood],
+    description: "ゲストユーザーのサンプル投稿です。",
+    is_public: true
+  )
 end
 
-3.times do |i|
-  user = User.find_or_create_by!(
-    email: "sample#{i + 1}@example.com"
-  ) do |u|
+# サンプルユーザー
+sample_users = [
+  {
+    email: "sample1@example.com",
+    name: "サンプルユーザー1",
+    password: "password",
+    avatar: "sample2.png"
+  },
+    {
+    email: "sample2@example.com",
+    name: "サンプルユーザー2",
+    password: "password",
+    avatar: "sample3.png"
+  },
+    {
+    email: "sample3@example.com",
+    name: "サンプルユーザー3",
+    password: "password",
+    avatar: "sample4.png"
+  }
+]
+
+sample_users.each do |data|
+  user = User.find_or_create_by!(email: data[:email]) do |u|
     u.password = "password"
-    u.name = "サンプルユーザー#{i + 1}"
+    u.name = data[:name]
   end
 
-  attach_avatar(user, "sample#{i + 1}.png", force: true)
+  attach_avatar(user, data[:avatar], force: true)
+  user.dramas.destroy_all
 
-  3.times do |j|
-    user.dramas.find_or_create_by!(
-      title: "サンプル#{i + 1}-ドラマ#{j + 1}"
-    ) do |drama|
-      drama.genre = "恋愛"
-      drama.mood = "胸キュン"
-      drama.description = "サンプルユーザー#{i + 1}の投稿です。"
-      drama.is_public = [true, false].sample
-    end
+  drama_samples.each do |sample|
+    user.dramas.create!(
+      title: sample[:title],
+      genre: sample[:genre],
+      mood: sample[:mood],
+      description: "#{user.name}のサンプル投稿です。",
+      is_public: true
+    )
   end
 end
