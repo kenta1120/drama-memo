@@ -53,19 +53,23 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 20px auto;
+  justify-content: center;
+  justify-items: center;
 }
 
 /* ドラマカード */
 .drama-card {
+  max-width: 360px;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 20px;
-  margin: 0;
+  margin: 0 auto;
   height: 300px;
   overflow: hidden;
   background-color: #fafafa;

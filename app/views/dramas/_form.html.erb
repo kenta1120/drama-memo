@@ -4,6 +4,11 @@
     <%= f.text_field :title %>
   </div>
 
+  <div class="form-element">
+    <%= f.label :thumbnail, "サムネイル" %>
+    <%= f.file_field :thumbnail, accept: "image/*" %>
+  </div>
+
   <div class="form-element" >
     <%= f.label :genre, "ジャンル" %>
     <%= f.select :genre, Drama::GENRES, { prompt: "選択してください" } %>
