@@ -96,4 +96,18 @@ RSpec.describe Drama, type: :model do
       expect(described_class.private_dramas).to contain_exactly(private_drama)
     end
   end
+
+  describe "サムネイル" do
+    it "サムネイルを添付できること" do
+      drama = create(:drama, user: user)
+
+      drama.thumbnail.attach(
+        io: Rails.root.join("spec/fixtures/sample.png").open,
+        filename: "sample.png",
+        content_type: "image/png"
+      )
+
+      expect(drama.thumbnail).to be_attached
+    end
+  end
 end

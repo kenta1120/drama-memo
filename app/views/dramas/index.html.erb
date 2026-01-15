@@ -20,10 +20,21 @@
     <div class="drama-grid">
     <% @dramas.each do |drama| %>
       <div class="drama-card">
+
+        <div class="drama-card-thumbnail">
+          <% if drama.thumbnail.attached? %>
+            <%= image_tag drama.thumbnail, class: "drama-thumb"%>
+          <% else %>
+            <div class="drama-thumb placeholder">NO IMAGE</div>
+          <% end %>
+        </div>
+
         <h3><%= link_to drama.title, drama_path(drama) %></h3>
         <p>ジャンル：<%= drama.genre %></p>
         <p>感情タグ：<%= drama.mood %></p>
-        <p>どんな時に見るのがオススメ？：<%= drama.scene %></p>
+        <% if drama.scene.present? %>
+          <p>どんな時に見るのがオススメ？：<%= truncate(drama.scene, length: 18) %></p>
+        <% end %>
         <% if drama.watched_on.present? %>
           <p>視聴日：<%= drama.watched_on.strftime("%Y年%m月%d日") %></p>
         <% end %>

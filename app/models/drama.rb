@@ -1,6 +1,7 @@
 class Drama < ApplicationRecord
   validates :title, presence: true
   belongs_to :user
+  has_one_attached :thumbnail
 
   GENRES = %w[コメディ 恋愛 アクション ファンタジー ホラー サスペンス].freeze
   MOODS = %w[癒し 感動 怖い ドキドキ 胸キュン].freeze

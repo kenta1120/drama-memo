@@ -195,6 +195,38 @@ header {
   gap: 10px;
 }
 
+/* サムネイル */
+.drama-thumbnail {
+  margin: 16px 0;
+}
+
+.drama-thumbnail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.drama-card-thumbnail {
+  margin-bottom: 10px;
+}
+
+.drama-thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.drama-thumb.placeholder {
+  background: #f3f4f6;
+  color: #666;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
 /* ドロップダウン全体 */
 .dropdown {
   position: relative;

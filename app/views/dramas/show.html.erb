@@ -1,5 +1,12 @@
 <div class="drama-show">
   <h1><%= @drama.title %></h1>
+
+  <% if @drama.thumbnail.attached? %>
+    <div class="drama-thumbnail">
+      <%= image_tag @drama.thumbnail%>
+    </div>
+  <% end %>
+
   <p><strong>ジャンル: </strong> <%= @drama.genre %></p>
   <p><strong>感情タグ: </strong> <%= @drama.mood %></p>
   <p><strong>どんなときに見るのがオススメ？: </strong> <%= @drama.scene %></p>
